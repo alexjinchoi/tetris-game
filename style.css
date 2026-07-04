@@ -1,0 +1,281 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #111827;
+  color: #f9fafb;
+  font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.game-card {
+  width: 100%;
+  max-width: 900px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.title-area {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.title-area h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.title-area p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+.game-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.board-wrap {
+  position: relative;
+  flex-shrink: 0;
+  touch-action: none;
+  user-select: none;
+}
+
+#gameCanvas {
+  width: min(70vw, 300px);
+  height: auto;
+  display: block;
+  background: #0f172a;
+  border: 4px solid #475569;
+  border-radius: 12px;
+}
+
+.message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #64748b;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  display: none;
+}
+
+.message.show {
+  display: block;
+}
+
+.side-panel {
+  width: 200px;
+}
+
+.info-box,
+.next-box,
+.guide {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.info-box h2,
+.next-box h2,
+.guide h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #dbeafe;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.small-info p {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+#nextCanvas {
+  display: block;
+  width: 120px;
+  height: 120px;
+  background: #0f172a;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.button-group {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#pauseBtn {
+  background: #475569;
+}
+
+#pauseBtn:hover {
+  background: #334155;
+}
+
+#restartBtn {
+  background: #dc2626;
+}
+
+#restartBtn:hover {
+  background: #b91c1c;
+}
+
+.guide p {
+  margin: 6px 0;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.touch-controls {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-controls button {
+  min-height: 52px;
+  font-size: 17px;
+}
+
+.touch-controls button[data-action="drop"] {
+  grid-column: span 3;
+  background: #16a34a;
+}
+
+.touch-controls button[data-action="drop"]:hover {
+  background: #15803d;
+}
+
+@media (max-width: 760px) {
+  .app {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .game-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .title-area h1 {
+    font-size: 22px;
+  }
+
+  .title-area p {
+    font-size: 13px;
+  }
+
+  .game-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 360px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-box,
+  .next-box,
+  .guide {
+    margin-bottom: 0;
+  }
+
+  .button-group {
+    grid-column: span 2;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guide {
+    grid-column: span 2;
+  }
+
+  .touch-controls {
+    display: grid;
+  }
+
+  #gameCanvas {
+    width: min(88vw, 300px);
+  }
+}
+
+@media (max-width: 430px) {
+  .side-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group,
+  .guide {
+    grid-column: span 1;
+  }
+
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+}
