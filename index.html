@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>블록 퍼즐 게임</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="game-card">
+      <div class="title-area">
+        <h1>블록 퍼즐 게임</h1>
+        <p>아이패드 Safari와 PC 브라우저에서 실행되는 HTML 게임입니다.</p>
+      </div>
+
+      <div class="game-layout">
+        <div class="board-wrap">
+          <canvas id="gameCanvas" width="300" height="600"></canvas>
+          <div id="message" class="message">시작 버튼을 눌러주세요</div>
+        </div>
+
+        <aside class="side-panel">
+          <div class="info-box">
+            <h2>점수</h2>
+            <p id="score">0</p>
+          </div>
+
+          <div class="info-box">
+            <h2>최고점</h2>
+            <p id="bestScore">0</p>
+          </div>
+
+          <div class="info-box small-info">
+            <p>레벨: <span id="level">1</span></p>
+            <p>제거 줄: <span id="lines">0</span></p>
+          </div>
+
+          <div class="next-box">
+            <h2>다음 블록</h2>
+            <canvas id="nextCanvas" width="120" height="120"></canvas>
+          </div>
+
+          <div class="button-group">
+            <button id="startBtn" type="button">시작</button>
+            <button id="pauseBtn" type="button">일시정지</button>
+            <button id="restartBtn" type="button">다시 시작</button>
+          </div>
+
+          <div class="guide">
+            <h2>조작법</h2>
+            <p>PC: ← → ↓ ↑</p>
+            <p>스페이스바: 바로 내리기</p>
+            <p>아이패드: 아래 버튼 사용</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="touch-controls">
+        <button type="button" data-action="left">←</button>
+        <button type="button" data-action="rotate">회전</button>
+        <button type="button" data-action="right">→</button>
+        <button type="button" data-action="down">↓</button>
+        <button type="button" data-action="drop">바로 내리기</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
