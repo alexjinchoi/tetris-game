@@ -1,6 +1,26 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+const bgm = new Audio("./sounds/tetris-bgm.mp3");
+
+bgm.loop = true;
+bgm.volume = 0.35;
+
+function playBgm() {
+  bgm.play().catch(() => {
+    // 아이폰 Safari 등에서 자동 재생이 차단될 경우 조용히 무시
+  });
+}
+
+function pauseBgm() {
+  bgm.pause();
+}
+
+function stopBgm() {
+  bgm.pause();
+  bgm.currentTime = 0;
+}
+
 const nextCanvas = document.getElementById("nextCanvas");
 const nextCtx = nextCanvas.getContext("2d");
 
@@ -143,6 +163,7 @@ function resetGame() {
   }
 
   draw();
+  playBgm();
   animationId = requestAnimationFrame(update);
 }
 
@@ -163,9 +184,11 @@ function togglePause() {
   isPaused = !isPaused;
 
   if (isPaused) {
+    pauseBgm();
     showMessage("일시정지");
   } else {
     hideMessage();
+    playBgm();
     lastTime = 0;
     animationId = requestAnimationFrame(update);
   }
@@ -174,6 +197,8 @@ function togglePause() {
 function gameOver() {
   isGameOver = true;
   isRunning = false;
+
+  stopBgm();
 
   if (score > bestScore) {
     bestScore = score;
