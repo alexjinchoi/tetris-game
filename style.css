@@ -464,3 +464,89 @@ button {
     font-size: 11px;
   }
 }
+/* ============================= */
+/* iPad touch controls fix */
+/* ============================= */
+
+/* 터치 기기에서는 화면 폭과 관계없이 조작 버튼 표시 */
+@media (hover: none) and (pointer: coarse) {
+  .touch-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .touch-controls button {
+    min-height: 56px;
+    padding: 12px 8px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+
+  .touch-controls button[data-action="drop"] {
+    grid-column: span 4;
+    min-height: 54px;
+    background: #16a34a;
+  }
+}
+
+/* 아이패드 세로/가로 화면 대응 */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .app {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .game-card {
+    max-width: 760px;
+  }
+
+  .game-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 520px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .info-box,
+  .next-box,
+  .guide {
+    margin-bottom: 0;
+  }
+
+  .next-box,
+  .guide {
+    display: none;
+  }
+
+  .button-group {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .small-info {
+    grid-column: span 2;
+  }
+
+  #gameCanvas {
+    width: min(72vw, 300px);
+    height: auto;
+  }
+}
