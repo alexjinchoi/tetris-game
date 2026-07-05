@@ -550,3 +550,150 @@ button {
     height: auto;
   }
 }
+/* ===================================== */
+/* iPad Safari layout final fix */
+/* 터치 조작 버튼을 화면 하단에 고정 */
+/* ===================================== */
+
+@media (hover: none) and (pointer: coarse) and (min-width: 700px) {
+  html,
+  body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .app {
+    min-height: 100dvh;
+    height: 100dvh;
+    padding: 8px 12px 96px;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  .game-card {
+    width: 100%;
+    max-width: 960px;
+    height: calc(100dvh - 104px);
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .title-area {
+    margin-bottom: 10px;
+  }
+
+  .title-area h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .title-area p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .game-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .board-wrap {
+    flex-shrink: 0;
+  }
+
+  #gameCanvas {
+    width: min(46vw, calc((100dvh - 190px) / 2), 300px);
+    height: auto;
+  }
+
+  .side-panel {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .info-box,
+  .next-box,
+  .guide {
+    margin-bottom: 0;
+    padding: 12px;
+  }
+
+  .info-box h2,
+  .next-box h2,
+  .guide h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .info-box p {
+    font-size: 26px;
+  }
+
+  .small-info p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .next-box {
+    display: none;
+  }
+
+  .guide {
+    display: none;
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .button-group button {
+    min-height: 46px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .touch-controls {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 9999;
+
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+
+    max-width: 760px;
+    margin: 0 auto;
+
+    background: rgba(15, 23, 42, 0.92);
+    padding: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+
+    touch-action: none;
+    user-select: none;
+  }
+
+  .touch-controls button {
+    min-height: 50px;
+    padding: 10px 6px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+
+  .touch-controls button[data-action="drop"] {
+    grid-column: span 4;
+    min-height: 48px;
+    background: #16a34a;
+  }
+}
